@@ -36,11 +36,11 @@
     background-color: orangered;
 }
 .curar {
-    background-color: yellowgreen;
+    background-color: rebeccapurple;
 }
 
 .desistir {
-    background-color: rebeccapurple;
+    background-color: red;
 }
 
 .botao:hover {

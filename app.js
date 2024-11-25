@@ -19,16 +19,16 @@ new Vue({
         },
         
         curar(cura){
-            this.lifeJogador = Number(Math.min(this.lifeJogador += cura, 100))
+            this.lifeJogador = Math.min(this.lifeJogador + cura, 100)
             
         },
 
         ataqueMonstro(dano){
-            this.lifeJogador = Number(Math.max(this.lifeJogador - dano, 0)).toFixed(2)
+            this.lifeJogador = Math.max(this.lifeJogador - dano, 0)
         },
 
         ataqueJogador(dano){
-            this.lifeMonstro = Number(Math.max(this.lifeMonstro - dano, 0)).toFixed(2)
+            this.lifeMonstro = Math.max(this.lifeMonstro - dano, 0)
         },
         
         listarAtaques(jogador, monstro){
@@ -71,7 +71,7 @@ new Vue({
             let especial = 0;
 
             if(acao === 'atacar'){
-               danoMonstro = Number((Math.random() * 5)).toFixed(0) * 1.2;
+               danoMonstro = Number((Math.random() * 5)).toFixed(0)
                danoJogador = Number((Math.random() * 5)).toFixed(0);
     
                 this.ataqueJogador(danoJogador)
@@ -80,27 +80,36 @@ new Vue({
                 this.listarAtaques(danoJogador, danoMonstro)
 
             } else if (acao === 'curar'){
-                cura = Number((Math.random() * 5)).toFixed(0);
-                danoMonstro = Number((Math.random() * 5)).toFixed(0) * 1.2;
+                cura = Number((Math.random() * 50)).toFixed(0);
+                danoMonstro = Number((Math.random() * 5)).toFixed(0)
     
                 this.curar(cura)
-                /* this.ataqueMonstro(danoMonstro); */
-    
+                this.ataqueMonstro(danoMonstro);
                 
                 this.listarCura(cura, danoMonstro)
+
             } else if(acao === 'especial'){
-                danoMonstro = Number((Math.random() * 5)).toFixed(0) * 1.2;
+                danoMonstro = Number((Math.random() * 5)).toFixed(0)
                 especial = Number((Math.random() * 5)).toFixed(0) * 2;
 
                 this.ataqueJogador(especial)
                 this.ataqueMonstro(danoMonstro);
                 
                 this.listarEspecial(especial, danoMonstro)
+
             }
             
             // Log no console para debug
             console.log(`Jogador: Dano ${danoJogador}, Cura ${cura}, Especial ${especial} | Monstro: Dano ${danoMonstro}`);
         },
+
+        reset(){
+            this.lifeJogador = 100,
+            this.lifeMonstro = 100,
+            this.golpeEspecial= 5,
+            this.iniciado = false,
+            this.log = []
+        }
 
     }
 })
