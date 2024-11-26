@@ -4,110 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matador de Monstros</title>
     <link rel="stylesheet" href="./styles/style.css">
     <script src="https://unpkg.com/vue@2"></script>
-    <title>Matador de Monstros</title>
 </head>
 
 <body>
     <main id="desafio">
 
-        <!-- Caixa de Status dos Players -->
-        <section class="players">
-
-            <!-- Status do Jogados -->
-            <div class="status">
-
-                <!-- Nome do Jogador -->
-                <h2 class="jogador">Jogador</h2>
-
-                <!-- Moldura da Barra de Life -->
-                <div class="barra-life">
-
-                    <!-- Status do Life; Recebe colocação baseada na qtde de life; Altura fixa e Largura é atualizada pelo valor do life. -->
-                    <div class="life" :class="lifeColor(lifeJogador)" :style="{width: lifeJogador + '%'}">
-                        <!-- Quantidade de Life -->
-                        <span class="valor-life">{{ lifeJogador }}%</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Status do Monstro -->
-            <div class="status">
-
-                <!-- Nome do Monstro -->
-                <h2 class="jogador">Monstro</h2>
-
-                <!-- Moldura da Barra de Life -->
-                <div class="barra-life">
-
-                    <!-- Status do Life; Recebe colocação baseada na qtde de life; Altura fixa e Largura é atualizada pelo valor do life. -->
-                    <div class="life" :class="lifeColor(lifeMonstro)" :style="{width: lifeMonstro + '%'}">
-                        <!-- Quantidade de Life -->
-                        <span class="valor-life">{{ lifeMonstro }}%</span>
-                    </div>
-
-                </div>
-
-
-
-            </div>
-
-        </section>
-
-        <!-- Caixa com Botões de Interatividade com o Usuário -->
-        <section class="caixa-interacao">
-
-            <!-- Botão para Iniciar o jogo. Fica oculto enquanto o jogo está ativo -->
-
-            <template v-if="!iniciado">
-                <button class="botao" @click="iniciado = !iniciado">
-                    Iniciar
-                </button>
-            </template>
-
-            <template v-else="iniciado">
-
-                <div class="caixa-botoes">
-
-                    <button class="botao ataque" @click="acao('atacar')">
-                        Ataque
-                    </button>
-
-                    <button class="botao ataqueEspecial" @click="acao('especial')" v-show="golpeEspecial > 0">
-                        Especial
-                    </button>
-
-                    <button class="botao curar" @click="acao('curar')">
-                        Curar
-                    </button>
-
-                </div>
-
-                <button class="botao desistir" @click="reset()">
-                    Quit
-                </button>
-            </template>
-            
-
-        </section>
-
-        <!-- Informações sobre o combate -->
-        <section class="log-combate" v-if="log.length > 0">
-
-            <ul>
-
-                <h3 class="log-title">Logs de Combate</h3>
-
-                <li class="log" v-for="(registro, index) in log.slice().reverse()" :key="index">
-                    {{ registro }}
-                </li>
-
-            </ul>
-
-        </section>
 
 
     </main>

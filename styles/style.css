@@ -1,20 +1,5 @@
-@import url('./players.css');
-@import url('./botoes.css');
-@import url('./log.css');
-
-/* Default */
 * {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
-}
-
-body{
-    width: 100vw;
-    height: 100vh;
-}
-
-#desafio {
-    width: 1024px;
-    margin: 0 auto
 }
