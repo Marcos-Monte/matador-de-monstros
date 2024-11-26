@@ -14,7 +14,7 @@
 
         <section class="secao status">
 
-            <article class="statusJogador">
+            <article class="statusPersonagem">
 
                 <h1>Jogador</h1>
 
@@ -36,7 +36,7 @@
 
             </article>            
             
-            <article class="statusMonstro">
+            <article class="statusPersonagem">
 
                 <h1>Monstro</h1>
 
@@ -61,9 +61,66 @@
 
         </section>
 
-        <section class="secao resultado"></section>
+        <section class="secao resultado"
+            v-if="temResultado"
+        >
 
-        <section class="secao controles"></section>
+            <template v-if="lifeMonstro == 0">
+                <p class="vencedor">Você Ganhou</p>
+            </template>
+
+            <template v-else>
+                <p class="perdedor">Você Perdeu</p> 
+            </template>
+
+        </section>
+
+        <section class="secao controles">
+
+            <template v-if="jogando">
+
+                <button 
+                    class="botao ataque"
+                >
+                    Ataque
+
+                </button>
+
+                <button 
+                    class="botao especial"
+                >
+                    Ataque Especial
+
+                </button>
+
+                <button 
+                    class="botao cura"
+                >
+                    Curar
+
+                </button>
+
+                <button 
+                    class="botao desistir"
+                    @click="jogando = false"
+                >
+                    Desistir
+                </button>
+
+            </template>
+
+            <template v-else>
+
+                <button 
+                    class="botao"
+                    @click="iniciarPartida"
+                >
+                    Iniciar Partida
+                </button>
+
+            </template>
+
+        </section>
 
         <section class="secao logs"></section>
 

@@ -3,19 +3,26 @@ new Vue({
     el: '#desafio',
 
     data: {
-        lifeJogador: 74,
-        lifeMonstro: 24,
+        lifeJogador: 0,
+        lifeMonstro: 100,
         jogando: false
     },
 
     computed: {
         temResultado(){
-            this.jogando = false;
-
+            return this.lifeJogador == 0 || this.lifeMonstro == 0
         }
     },
     methods: {
+        iniciarPartida(){
+            this.lifeJogador = 100;
+            this.lifeMonstro = 100;
+            this.jogando = true
+        },
 
+        valorAleatorio(){
+            
+        }
     },
     watch: {
 

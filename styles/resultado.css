@@ -1,0 +1,17 @@
+/* Resultado da Partida*/
+
+.resultado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.resultado .vencedor {
+    color: green
+}
+
+.perdedor {
+    color: red
+}
