@@ -12,7 +12,60 @@
 <body>
     <main id="desafio">
 
+        <section class="secao status">
 
+            <article class="statusJogador">
+
+                <h1>Jogador</h1>
+
+                <div class="barraLife">
+
+                    <div 
+                        class="life"
+                        :class="{
+                            ferido: lifeJogador < 75 && lifeJogador >= 25, perigo: lifeJogador < 25
+                        }"
+                        :style="{
+                            width: lifeJogador + '%'
+                        }"
+                    ></div>
+
+                </div>
+
+                {{ lifeJogador }}%
+
+            </article>            
+            
+            <article class="statusMonstro">
+
+                <h1>Monstro</h1>
+
+                <div class="barraLife">
+
+                    <div 
+                        class="life"
+                        :class="{
+                            ferido: lifeMonstro < 75 && lifeMonstro > 25,
+                            perigo: lifeMonstro < 25
+                        }"
+                        :style="{
+                            width: lifeMonstro + '%'
+                        }"
+                    ></div>
+
+                </div>
+
+                {{ lifeMonstro }}%
+
+            </article>
+
+        </section>
+
+        <section class="secao resultado"></section>
+
+        <section class="secao controles"></section>
+
+        <section class="secao logs"></section>
 
     </main>
 
