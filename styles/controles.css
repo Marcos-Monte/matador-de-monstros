@@ -1,3 +1,5 @@
+/* Controles do Jogo */
+
 .controles {
     display: flex;
     justify-content: space-evenly;

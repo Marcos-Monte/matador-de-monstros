@@ -46,6 +46,8 @@ new Vue({
             if(this.lifeMonstro > 0){
                 this.dano('lifeJogador', 7, 12, false, 'monstro', 'jogador', 'monster' );
             }
+            
+
         },
 
         curar(min, max, classe){
@@ -61,9 +63,9 @@ new Vue({
 
         curarEmBatalha(){
 
-            this.curar(8, 13, 'player');
-
             this.dano('lifeJogador', 7, 12, false, 'Monstro', 'jogador', 'monster' );
+
+            this.curar(8, 13, 'player');
 
         },
 
