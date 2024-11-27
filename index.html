@@ -89,13 +89,13 @@
                 </button>
 
                 <!-- Botão de Ataque. recebe 'verdadeiro' para a propriedade 'especial' -->
-                <button class="botao especial" @click="atacar(true)">
+                <button class="botao especial" @click="atacar(true)" v-if="especial >= 1">
                     Especial
 
                 </button>
 
                 <!-- Botão de Cura -->
-                <button class="botao cura" @click="curarEmBatalha()">
+                <button class="botao cura" @click="curarEmBatalha()" v-if="heal >= 1">
                     Curar
 
                 </button>
@@ -135,7 +135,7 @@
 
     </main>
 
-    <!-- Importando Instancia Vue -->
+    <!-- Importando Instancia Vue (type="module", usado por conta da sintaxe 'EcmaScript') -->
     <script type="module" src="app.js"></script>
 </body>
 

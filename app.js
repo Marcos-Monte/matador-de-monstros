@@ -11,7 +11,9 @@ new Vue({
         lifeJogador: 100,
         lifeMonstro: 100,
         jogando: false,
-        logs: []
+        especial: 0, /* Valor será acrescido em 0.25 a cada golpe 'comum' */
+        heal: 2, /* A cada 2 ataques, ganha uma cura */
+        logs: [], /* Armazenamento de Logs de Batalha */
     },
 
     /* Métodos Computados - São executados, apenas, se as dependencias mudarem */
@@ -29,6 +31,8 @@ new Vue({
             this.jogando = true;
             this.lifeJogador = 100;
             this.lifeMonstro = 100;
+            this.especial = 0;
+            this.heal = 2;
             this.logs = [];
         },
 
@@ -37,15 +41,29 @@ new Vue({
 
             /* Logica de recebimento de dano do personagem Monstro */
             /* Pode ou não receber dano 'especial' */
-            dano(this, 'lifeMonstro', 5, 10, especial, 'jogador', 'monstro', 'player', 'logs')
+            dano(this, 'lifeMonstro', 0, 10, especial, 'jogador', 'monstro', 'player', 'logs')
+
+            /* Condicional:   */
+            if(especial){
+                /* Se o ataque for especial, retirar 1 ponto de especial. */
+                this.especial -= 1;
+                
+            } else {
+                /* Se for comum, adicionar porcentagem de 'especial' */
+                /* Garante que o maior valor de 'especial' seja 3*/
+                this.especial = Math.min(this.especial + 0.25, 3)
+            }
+            /* Garante que o maior valor de 'heal' seja 3*/
+            this.heal = Math.min(this.heal + 0.5, 3)
 
             /* Condicional: Se o life do Monstro for maior que zero, pode atacar. */
             if(this.lifeMonstro > 0){
                 /* Logica de recebimento de dano do personagem Monstro  */
-                dano(this, 'lifeJogador', 7, 12, false, 'monstro', 'jogador', 'monster', 'logs')
+                dano(this, 'lifeJogador', 0, 12, false, 'monstro', 'jogador', 'monster', 'logs')
+            } else { /* Se o life do Monstro for menor que zero, ele não ataca */
+                return
             }
             
-
         },
 
         /* Função de curar em Batalha */
@@ -56,6 +74,9 @@ new Vue({
 
             /* Logica de recebimento de cura do personagem Jogador  */
             curar(this, 'lifeJogador', 8, 13, 'player', 'logs')
+
+            /* Ao usar a 'cura em batalha': diminui em um o 'heal' */
+            this.heal -= 1;
 
         },
         
