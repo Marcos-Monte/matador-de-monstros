@@ -1,0 +1,21 @@
+{
+  "name": "projeto-matador-de-monstros",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcos-Monte/matador-de-monstros.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcos-Monte/matador-de-monstros/issues"
+  },
+  "homepage": "https://github.com/Marcos-Monte/matador-de-monstros#readme"
+}
