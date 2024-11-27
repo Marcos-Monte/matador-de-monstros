@@ -12,112 +12,106 @@
 <body>
     <main id="desafio">
 
+        <!-- Painel de Status dos Personagens -->
         <section class="secao status">
-
+            <!-- Status do Personagem -->
             <article class="statusPersonagem">
 
+                <!-- Nome do Personagem -->
                 <h1>Jogador</h1>
 
+                <!-- Barra de Life -->
                 <div class="barraLife">
 
-                    <div 
-                        class="life"
-                        :class="{
+                    <!-- Porcentagem de Life = :classe condicional + :estilo condicional -->
+                    <div class="life" :class="{
                             ferido: lifeJogador < 75 && lifeJogador >= 25, perigo: lifeJogador < 25
-                        }"
-                        :style="{
+                        }" :style="{
                             width: lifeJogador + '%'
-                        }"
-                    ></div>
+                        }"></div>
 
                 </div>
 
+                <!-- Mostrador de Life -->
                 {{ lifeJogador }}%
 
-            </article>            
-            
+            </article>
+
+            <!-- Status do Personagem -->
             <article class="statusPersonagem">
 
+                <!-- Nome do Personagem -->
                 <h1>Monstro</h1>
 
+                <!-- Barra de Life -->
                 <div class="barraLife">
 
-                    <div 
-                        class="life"
-                        :class="{
+                    <!-- Porcentagem de Life=  :classe condicional + :estilo condicional -->
+                    <div class="life" :class="{
                             ferido: lifeMonstro < 75 && lifeMonstro > 25,
                             perigo: lifeMonstro < 25
-                        }"
-                        :style="{
+                        }" :style="{
                             width: lifeMonstro + '%'
-                        }"
-                    ></div>
+                        }"></div>
 
                 </div>
 
+                <!-- Mostrador de Life -->
                 {{ lifeMonstro }}%
 
             </article>
 
         </section>
 
-        <section class="secao resultado"
-            v-if="temResultado"
-        >
-
+        <!-- Painel de Resultado da Batalha -->
+        <section class="secao resultado" v-if="temResultado">
+            <!-- Diretivas Condicionais, para mostrar a mensagem condizente com o vencedor -->
             <template v-if="lifeMonstro == 0">
                 <p class="vencedor">Você Ganhou</p>
             </template>
 
             <template v-else>
-                <p class="perdedor">Você Perdeu</p> 
+                <p class="perdedor">Você Perdeu</p>
             </template>
 
         </section>
 
+        <!-- Painel de Controles do Jogo -->
         <section class="secao controles">
 
+            <!-- Controles Durante a Partida -->
             <template v-if="jogando">
 
-                <button 
-                    class="botao ataque"
-                    @click="atacar(false)"
-                >
+                <!-- Botão de Ataque. recebe 'falso' para a propriedade 'especial' -->
+                <button class="botao ataque" @click="atacar(false)">
                     Ataque
 
                 </button>
 
-                <button 
-                    class="botao especial"
-                    @click="atacar(true)"
-                >
-                    Ataque Especial
+                <!-- Botão de Ataque. recebe 'verdadeiro' para a propriedade 'especial' -->
+                <button class="botao especial" @click="atacar(true)">
+                    Especial
 
                 </button>
 
-                <button 
-                    class="botao cura"
-                    @click="curarEmBatalha()"
-                >
+                <!-- Botão de Cura -->
+                <button class="botao cura" @click="curarEmBatalha()">
                     Curar
 
                 </button>
 
-                <button 
-                    class="botao desistir"
-                    @click="jogando = false"
-                >
+                <!-- Botão de Quit - Muda o valor da variavel 'jogando' para false (Saindo da Partida) -->
+                <button class="botao desistir" @click="jogando = false">
                     Desistir
                 </button>
 
             </template>
 
+            <!-- Controle fora da Partida -->
             <template v-else>
 
-                <button 
-                    class="botao"
-                    @click="iniciarPartida()"
-                >
+                <!-- Botão para Iniciar Partida - Reseta: life dos personagens e logs - muda Variável 'jogando' para true -->
+                <button class="botao" @click="iniciarPartida()">
                     Iniciar Partida
                 </button>
 
@@ -125,14 +119,14 @@
 
         </section>
 
-        <section class="secao logs"
-            v-if="logs.length"
-        >
+        <!-- Painel de Logs da Batalha. Indica os Valores de dano e cura da batalha - Visivel apenas se houver Logs -->
+        <section class="secao logs" v-if="logs.length">
             <ul>
-                <li 
-                    :class="log.classe"
-                    v-for="log in logs"
-                >
+
+                <!-- Lista condicional, percorre os 'valores' da lista 'logs' - :classe condicional, cada personagem recebe uma estilização nos seus logs -->
+                <li :class="log.classe" v-for="log in logs">
+
+                    <!-- Aparece texto do registro do Log -->
                     {{ log.texto }}
                 </li>
             </ul>
@@ -141,6 +135,7 @@
 
     </main>
 
+    <!-- Importando Instancia Vue -->
     <script src="app.js"></script>
 </body>
 
