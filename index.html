@@ -81,6 +81,7 @@
 
                 <button 
                     class="botao ataque"
+                    @click="atacar(false)"
                 >
                     Ataque
 
@@ -88,6 +89,7 @@
 
                 <button 
                     class="botao especial"
+                    @click="atacar(true)"
                 >
                     Ataque Especial
 
@@ -95,6 +97,7 @@
 
                 <button 
                     class="botao cura"
+                    @click="curarEmBatalha()"
                 >
                     Curar
 
@@ -113,7 +116,7 @@
 
                 <button 
                     class="botao"
-                    @click="iniciarPartida"
+                    @click="iniciarPartida()"
                 >
                     Iniciar Partida
                 </button>
@@ -122,7 +125,20 @@
 
         </section>
 
-        <section class="secao logs"></section>
+        <section 
+            class="secao logs"
+            v-if="logs.length"
+        >
+            <ul>
+                <li 
+                    :class="log.classe"
+                    v-for="log in logs"
+                >
+                    {{ log.texto }}
+                </li>
+            </ul>
+
+        </section>
 
     </main>
 
