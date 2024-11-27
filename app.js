@@ -1,3 +1,5 @@
+import { curar, dano } from './services/services.js';
+
 new Vue({
 
     el: '#desafio',
@@ -14,6 +16,7 @@ new Vue({
             return this.lifeJogador == 0 || this.lifeMonstro == 0
         }
     },
+
     methods: {
         iniciarPartida(){
             this.jogando = true;
@@ -22,65 +25,29 @@ new Vue({
             this.logs = [];
         },
 
-        valorAleatorio(min, max){
-            const valor = Math.random() * (max - min) + min;
-            return Math.round(valor);
-        },
-
-        dano(alvo, min, max, especial, atacante, vitima, classe){
-            const plus = especial? 5 : 0;
-
-            const dano = this.valorAleatorio(min + plus, max + plus);
-
-            this[alvo] = Math.max(this[alvo] - dano, 0);
-
-            this.registrarLog(
-                `${atacante} atingiu ${vitima} com ${dano}.`, classe
-            )
-        },
-
         atacar(especial){
 
-            this.dano('lifeMonstro', 5, 10, especial, 'jogador', 'monstro', 'player')
+            dano(this, 'lifeMonstro', 5, 10, especial, 'jogador', 'monstro', 'player', 'logs')
 
             if(this.lifeMonstro > 0){
-                this.dano('lifeJogador', 7, 12, false, 'monstro', 'jogador', 'monster' );
+                dano(this, 'lifeJogador', 7, 12, false, 'monstro', 'jogador', 'monster', 'logs')
             }
             
 
         },
 
-        curar(min, max, classe){
-
-            const cura = this.valorAleatorio(min, max);
-
-            this.lifeJogador = Math.min(this.lifeJogador  + cura, 100);
-
-            this.registrarLog(
-                `jogador foi curado em ${cura}.`, classe
-            )
-        },
-
         curarEmBatalha(){
 
-            this.dano('lifeJogador', 7, 12, false, 'Monstro', 'jogador', 'monster' );
+            dano(this, 'lifeJogador', 7, 12, false, 'monstro', 'jogador', 'monster', 'logs')
 
-            this.curar(8, 13, 'player');
+            curar(this, 'lifeJogador', 8, 13, 'player', 'logs')
 
         },
-
-        registrarLog(texto, classe){
-
-            this.logs.unshift({
-
-                texto, classe
-
-            })
-
-        }
         
     },
+    
     watch: {
+
         temResultado(valor){
 
             if(valor) this.jogando = false;
