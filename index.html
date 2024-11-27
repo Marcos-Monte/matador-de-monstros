@@ -21,19 +21,48 @@
                 <h1>Jogador</h1>
 
                 <!-- Barra de Life -->
-                <div class="barraLife">
+                <div class="barra barraLife">
 
                     <!-- Porcentagem de Life = :classe condicional + :estilo condicional -->
                     <div class="life" :class="{
                             ferido: lifeJogador < 75 && lifeJogador >= 25, perigo: lifeJogador < 25
-                        }" :style="{
+                            }" :style="{
                             width: lifeJogador + '%'
                         }"></div>
 
                 </div>
 
+                
                 <!-- Mostrador de Life -->
-                {{ lifeJogador }}%
+                <span>{{ lifeJogador }}%</span>
+
+                <!-- Contabilizando Especial -->
+                <div class="barra barraEspecial">
+
+                    <!-- Quantidade de Especiais = :estilo condicional -->
+                    <div class="life especial" 
+                        :style="{width: especial * 50 + '%'}"
+                    >
+                    </div>
+                    
+                </div>
+
+                 <!-- Mostrador de Especiais -->
+                <span>Especial: {{ especial }} / 2</span>
+
+                <!-- Contabilizando Especial -->
+                <div class="barra barraCura">
+
+                    <!-- Quantidade de Especiais = :estilo condicional -->
+                    <div class="life cura" 
+                        :style="{width: heal * 50 + '%'}"
+                    >
+                    </div>
+                    
+                </div>
+
+                 <!-- Mostrador de Curas -->
+                <span>Cura: {{ heal }} / 2</span>
 
             </article>
 
@@ -44,11 +73,11 @@
                 <h1>Monstro</h1>
 
                 <!-- Barra de Life -->
-                <div class="barraLife">
+                <div class="barra barraLife">
 
                     <!-- Porcentagem de Life=  :classe condicional + :estilo condicional -->
                     <div class="life" :class="{
-                            ferido: lifeMonstro < 75 && lifeMonstro > 25,
+                            ferido: lifeMonstro < 75 && lifeMonstro >= 25,
                             perigo: lifeMonstro < 25
                         }" :style="{
                             width: lifeMonstro + '%'

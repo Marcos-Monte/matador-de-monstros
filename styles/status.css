@@ -14,10 +14,13 @@
     padding: 1rem 0;
 }
 
-.barraLife {
+.barra {
     width: 80%;
-    height: 2rem;
     border: 1px solid black;
+}
+
+.barraLife {
+    height: 2rem;
 }
 
 .life {
@@ -26,10 +29,28 @@
    /*  border-right: 1px solid black; */
 }
 
+.statusPersonagem span {
+    width: 80%;
+    margin: .1rem 0;
+    text-align: left;
+}
+
 .ferido {
     background-color: orange;
 }
 
 .perigo {
     background-color: red;
+}
+
+/* Especial */
+.barraEspecial, .barraCura {
+    height: 1rem;
+}
+
+.especial {
+    background-color: #cc7422;
+}
+.cura {
+    background-color: #5dd;
 }

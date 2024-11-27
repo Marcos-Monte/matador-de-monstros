@@ -51,10 +51,10 @@ new Vue({
             } else {
                 /* Se for comum, adicionar porcentagem de 'especial' */
                 /* Garante que o maior valor de 'especial' seja 3*/
-                this.especial = Math.min(this.especial + 0.25, 3)
+                this.especial = Math.min(this.especial + 0.25, 2)
             }
             /* Garante que o maior valor de 'heal' seja 3*/
-            this.heal = Math.min(this.heal + 0.5, 3)
+            this.heal = Math.min(this.heal + 0.5, 2)
 
             /* Condicional: Se o life do Monstro for maior que zero, pode atacar. */
             if(this.lifeMonstro > 0){
